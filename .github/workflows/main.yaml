@@ -1,5 +1,4 @@
 name: Groovy Library Example
-
 on:
   push:
     branches:
@@ -7,30 +6,24 @@ on:
   pull_request:
     branches:
       - master
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'adopt'
-          
+          distribution: 'adopt'          
       - name: Install Groovy
         run: |
           sudo apt-get update
-          sudo apt-get install -y groovy
-          
+          sudo apt-get install -y groovy          
       - name: Import Groovy library
         run: |
-          echo "Groovy Library imported"
-        
+          echo "Groovy Library imported"        
       - name: Run Groovy script
         run: |
           groovy tests/file.groovy
